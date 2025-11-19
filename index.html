@@ -149,7 +149,7 @@
 
     h1{
       font-family:"Playfair Display", serif;
-      font-size:44px;
+      font-size:35px;
       margin:0 0 10px 0;
       color:var(--gold);
       line-height:1.02;
@@ -276,6 +276,101 @@
       margin-bottom:18px;
     }
 
+    
+    /* Hébergements recommandés */
+    .hosts-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap:18px;
+      margin-top:22px;
+    }
+    .host-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:20px;
+      border:1px solid rgba(255,255,255,0.03);
+      transition: transform 300ms, box-shadow 300ms;
+      cursor:pointer;
+    }
+    .host-card:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(201,168,113,0.08);
+    }
+    .host-name{
+      font-weight:700;
+      color:var(--gold);
+      font-size:17px;
+      margin-bottom:8px;
+    }
+    .host-details{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .host-detail{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .host-price{
+      margin-top:12px;
+      padding-top:12px;
+      border-top:1px solid rgba(255,255,255,0.04);
+      font-size:20px;
+      font-weight:700;
+      color:#dbeaf0;
+    }
+    .host-price span{
+      font-size:13px;
+      font-weight:400;
+      color:var(--muted);
+    }
+
+    /* Services supplémentaires */
+    .services-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap:18px;
+      margin-top:22px;
+    }
+    .service-card{
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:24px;
+      border:1px solid rgba(255,255,255,0.03);
+      transition: transform 300ms, box-shadow 300ms;
+      text-align:center;
+    }
+    .service-card:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(201,168,113,0.06);
+    }
+    .service-icon{
+      font-size:36px;
+      margin-bottom:14px;
+      filter: drop-shadow(0 4px 8px rgba(201,168,113,0.2));
+    }
+    .service-name{
+      font-weight:700;
+      color:var(--gold);
+      font-size:17px;
+      margin-bottom:8px;
+    }
+    .service-desc{
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:12px;
+      line-height:1.4;
+    }
+    .service-price{
+      font-size:18px;
+      font-weight:700;
+      color:#dbeaf0;
+      margin-top:8px;
+    }
+
     /* Testimonials */
     .testimonials{
       display:grid;
@@ -323,6 +418,10 @@
       .hero-card{ padding:22px }
       .bullets{ order: -1 }
     }
+    a {
+  text-decoration: none;
+}
+
 
   </style>
 </head>
@@ -394,6 +493,56 @@
             </ul>
           </div>
         </aside>
+      </div>
+    </section>
+
+
+    <!-- HÉBERGEMENTS RECOMMANDÉS -->
+    <section id="hebergements" class="container" aria-labelledby="hebergements-title">
+      <div class="section-title" id="hebergements-title">Hébergements recommandés</div>
+      <p style="color:var(--muted); margin-bottom:18px">Découvrez une sélection de logements gérés par VIP Résidence, disponibles à la location</p>
+      
+      <div id="hosts-container" class="hosts-grid reveal">
+        <!-- Les hébergements seront ajoutés dynamiquement via JavaScript -->
+      </div>
+    </section>
+
+    <!-- SERVICES SUPPLÉMENTAIRES -->
+    <section id="services" class="container" aria-labelledby="services-title">
+      <div class="section-title" id="services-title">Services supplémentaires</div>
+      <p style="color:var(--muted); margin-bottom:18px">Optimisez votre location avec nos prestations à la carte</p>
+
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <div class="service-icon">🧹</div>
+          <div class="service-name">Ménage</div>
+          <div class="service-desc">Prestation standard ou premium avec produits écologiques et attention aux détails</div>
+          <div class="service-price">30-60€<br><small style="font-size:13px; color:var(--muted)">Standard</small></div>
+          <div style="margin-top:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,0.04)">
+            <div class="service-price">120€<br><small style="font-size:13px; color:var(--muted)">Premium</small></div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⭐</div>
+          <div class="service-name">Référencement</div>
+          <div class="service-desc">Mise en avant de votre logement sur notre site et nos canaux de distribution</div>
+          <div class="service-price">25€<span>/mois</span></div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🛏️</div>
+          <div class="service-name">Linge de maison</div>
+          <div class="service-desc">Draps, serviettes et linge de qualité hôtelière, lavés et repassés</div>
+          <div class="service-price">17€<span>/séjour</span></div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📸</div>
+          <div class="service-name">Shooting photo</div>
+          <div class="service-desc">Photos professionnelles pour valoriser votre bien et augmenter vos réservations</div>
+          <div class="service-price">40-60€<span>/séance</span></div>
+        </div>
       </div>
     </section>
 
@@ -554,6 +703,43 @@
     document.body.addEventListener('keyup', function(e){
       if (e.key === 'Tab') document.documentElement.classList.add('show-focus');
     });
+
+    // Gestion des hébergements recommandés
+    const hostsContainer = document.getElementById('hosts-container');
+    
+    function add_host(nom, lieu, nb_voyageur, prix) {
+      const hostCard = document.createElement('div');
+      hostCard.className = 'host-card';
+      
+      hostCard.innerHTML = `
+        <div class="host-name">${nom}</div>
+        <div class="host-details">
+          <div class="host-detail">
+            <span>📍</span>
+            <span>${lieu}</span>
+          </div>
+          <div class="host-detail">
+            <span>👥</span>
+            <span>${nb_voyageur} voyageur${nb_voyageur > 1 ? 's' : ''}</span>
+          </div>
+        </div>
+        <div class="host-price">${prix}€ <span>/nuit</span></div>
+      `;
+      
+      hostsContainer.appendChild(hostCard);
+      
+      // Ajouter l'animation reveal si le conteneur est visible
+      setTimeout(() => {
+        hostCard.classList.add('reveal', 'visible');
+      }, 10);
+    }
+
+    // Exemples d'hébergements (à supprimer ou modifier selon vos besoins)
+    add_host("Appartement Panorama", "Nice, Centre-ville", 4, 89);
+    add_host("Studio Cosy", "Bordeaux, Chartrons", 2, 65);
+    add_host("Loft Moderne", "Lyon, Confluence", 6, 120);
+    add_host("Villa Mer & Soleil", "Biarritz, Front de mer", 8, 250);
+
   </script>
 </body>
 </html>
