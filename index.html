@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VIP Résidence — Conciergerie Airbnb</title>
+  <meta name="description" content="VIP Résidence — gestion complète de vos locations courte durée. Zéro stress, rentabilité maximale." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0f2230; /* deep navy */
+      --gold: #c9a871; /* warm gold */
+      --muted: #9fb2bf;
+      --card: rgba(255,255,255,0.03);
+      --glass: rgba(255,255,255,0.04);
+      --accent: #0f5f74;
+      --radius: 14px;
+      --max-width: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg) 0%, #071726 100%);
+      color: #e6eef3;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding-bottom:60px;
+    }
+
+    /* Top sticky nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(11,28,38,0.55), rgba(11,28,38,0.35));
+      border-bottom: 1px solid rgba(201,168,113,0.06);
+      box-shadow: 0 6px 18px rgba(2,6,8,0.6);
+    }
+    .nav-inner{
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      gap:24px;
+      padding:14px 20px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      cursor:pointer;
+    }
+    .brand img{
+      height:46px;
+      width:46px;
+      object-fit:contain;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.6));
+      border-radius:8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:6px;
+    }
+    .brand .title{
+      font-family: "Playfair Display", serif;
+      color:var(--gold);
+      font-weight:700;
+      letter-spacing:0.6px;
+      font-size:18px;
+    }
+    .brand .sub{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+      line-height:1;
+    }
+    .nav-links{
+      margin-left:auto;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .btn{
+      border:1px solid transparent;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      background:transparent;
+      transition: all 250ms cubic-bezier(.2,.9,.3,1);
+    }
+    .btn:hover{ transform:translateY(-3px); }
+    .btn-primary{
+      background: linear-gradient(90deg, rgba(201,168,113,0.14), rgba(201,168,113,0.08));
+      border:1px solid rgba(201,168,113,0.2);
+      color:var(--gold);
+      box-shadow: 0 6px 18px rgba(201,168,113,0.03), inset 0 -1px 0 rgba(255,255,255,0.02);
+      font-weight:700;
+    }
+    .btn-ghost{
+      color:var(--muted);
+      border-radius:10px;
+      padding:8px 12px;
+    }
+
+    /* Hero */
+    .container{
+      max-width: var(--max-width);
+      margin: 44px auto;
+      padding: 0 20px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:36px;
+      align-items:center;
+      min-height: calc(100vh - 160px);
+    }
+
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: var(--radius);
+      padding:36px;
+      box-shadow: 0 10px 30px rgba(2,6,8,0.6);
+      border: 1px solid rgba(255,255,255,0.02);
+      transform: translateY(0);
+      transition: transform 400ms cubic-bezier(.2,.9,.3,1);
+    }
+    .hero-card:hover{ transform: translateY(-6px); }
+
+    .kicker{
+      display:inline-block;
+      font-size:13px;
+      background: rgba(201,168,113,0.08);
+      color:var(--gold);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:700;
+      letter-spacing:0.6px;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-family:"Playfair Display", serif;
+      font-size:44px;
+      margin:0 0 10px 0;
+      color:var(--gold);
+      line-height:1.02;
+      letter-spacing:0.2px;
+    }
+    p.lead{
+      color: #d8e6eb;
+      font-size:16px;
+      margin:12px 0 18px 0;
+      max-width: 70ch;
+    }
+
+    /* quick stats */
+    .stats{
+      display:flex;
+      gap:18px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .stat{
+      background: rgba(255,255,255,0.02);
+      padding:12px 16px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.015);
+      min-width:130px;
+      text-align:center;
+      transition: transform 300ms;
+    }
+    .stat strong{display:block; font-size:18px; color:var(--gold)}
+    .stat small{display:block; color:var(--muted); margin-top:6px; font-size:12px}
+
+    /* Form + bullets column */
+    .form-wrap{
+      display:flex;
+      gap:22px;
+      align-items:flex-start;
+    }
+    form.card-form{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.03);
+      width:100%;
+      max-width:420px;
+      box-shadow: 0 12px 30px rgba(2,6,8,0.5);
+    }
+    label{ font-size:13px; color:var(--muted); display:block; margin:8px 0 6px 0 }
+    input, textarea{
+      width:100%;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.03);
+      padding:10px 12px;
+      border-radius:8px;
+      color: #e8f2f6;
+      outline:none;
+      transition: box-shadow 180ms, transform 180ms;
+      font-size:14px;
+    }
+    input:focus, textarea:focus{
+      box-shadow: 0 8px 20px rgba(15,34,48,0.6);
+      transform: translateY(-2px);
+      border-color: rgba(201,168,113,0.22);
+    }
+    .cta{
+      margin-top:12px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .big-btn{
+      padding:12px 16px;
+      border-radius:10px;
+      font-weight:700;
+      background: linear-gradient(90deg, rgba(201,168,113,0.18), rgba(201,168,113,0.08));
+      color:var(--gold);
+      border:1px solid rgba(201,168,113,0.2);
+      cursor:pointer;
+    }
+
+    .bullets{
+      color: #d8e6eb;
+      padding:18px 18px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.02);
+      max-width:520px;
+      font-size:15px;
+      line-height:1.45;
+    }
+    .bullets ul{ padding-left:18px; margin:6px 0 0 0; }
+    .bullets li{
+      margin:10px 0;
+      list-style:none;
+      position:relative;
+      padding-left:34px;
+      color:#dbeaf0;
+    }
+    .bullets li::before{
+      content: "✔";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--gold);
+      font-weight:700;
+      background: rgba(201,168,113,0.06);
+      height:24px;
+      width:24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:6px;
+      font-size:13px;
+      transform: translateY(2px);
+    }
+
+    /* sections */
+    section{
+      padding:64px 0;
+    }
+    .section-title{
+      font-family: "Playfair Display", serif;
+      font-size:28px;
+      color:var(--gold);
+      margin-bottom:18px;
+    }
+
+    /* Testimonials */
+    .testimonials{
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap:18px;
+    }
+    .test{
+      background:var(--glass);
+      padding:18px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+      min-height:120px;
+      transition: transform 300ms;
+    }
+    .test p{ margin:0 0 8px 0; color:#dbeaf0 }
+    .test small{ color:var(--muted) }
+
+    /* Footer */
+    footer{
+      padding:28px 20px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+      margin-top:36px;
+    }
+
+    /* animations: fade-up when in view */
+    .reveal{
+      opacity:0;
+      transform: translateY(18px) scale(0.995);
+      transition: all 700ms cubic-bezier(.2,.9,.3,1);
+      will-change: transform, opacity;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width:980px){
+      .hero{ grid-template-columns: 1fr; padding-top:20px; min-height:auto; }
+      .brand .title{ font-size:16px }
+      .brand img{ height:40px; width:40px }
+      .nav-inner{ padding:10px 14px }
+      .form-wrap{ flex-direction:column }
+      .hero-card{ padding:22px }
+      .bullets{ order: -1 }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <a class="brand" href="#accueil" onclick="scrollToSection(event,'accueil')">
+        <img src="logo.jpg" alt="Logo VIP Résidence" />
+        <div>
+          <div class="title">VIP Résidence</div>
+          <div class="sub">Conciergerie • Location courte durée</div>
+        </div>
+      </a>
+
+      <div class="nav-links" role="navigation">
+        <button class="btn btn-ghost" onclick="scrollToSection(event,'avis')">Avis</button>
+        <button class="btn btn-primary" onclick="scrollToSection(event,'contact')">Nous contacter</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / ACCUEIL -->
+  <main>
+    <section id="accueil" class="container" aria-labelledby="accueil-title">
+      <div class="hero">
+        <div class="hero-card reveal" >
+          <span class="kicker">VIP Résidence</span>
+          <h1 id="accueil-title">Et si vos logements se géraient tout seuls pendant que vous profitez de la vie ?</h1>
+          <p class="lead">Nous prenons en charge la gestion complète de vos biens en location courte durée : optimisation tarifaire, photos & déco pro, communication 7j/7, ménage premium et check-ins automatisés. Résultat : revenus en hausse et zéro stress pour vous.</p>
+
+          <div class="stats" aria-hidden="true">
+            <div class="stat">
+              <strong>+36%</strong>
+              <small>Revenus locatifs (moyenne constatée)</small>
+            </div>
+            <div class="stat">
+              <strong>Réponse &lt; 5 min</strong>
+              <small>Support 7j/7 pour vos voyageurs</small>
+            </div>
+            <div class="stat">
+              <strong>À partir de 14%</strong>
+              <small>Commission pour un service premium</small>
+            </div>
+          </div>
+
+          <div style="margin-top:22px; display:flex; gap:12px; align-items:center;">
+            <button class="btn btn-primary" onclick="scrollToSection(event,'contact')">Obtenir un tarif</button>
+            <a class="btn btn-ghost" href="#avis" onclick="scrollToSection(event,'avis')" style="text-decoration:none">Voir les avis</a>
+          </div>
+
+          <div style="margin-top:18px; color:var(--muted); font-size:13px">
+            <em>VIP Résidence — gestion transparente, résultats mesurables. Nos engagements : respect de vos biens, optimisation continue et satisfaction voyageurs.</em>
+          </div>
+        </div>
+
+        <!-- right column: form + bullets -->
+        <aside class="form-wrap reveal" aria-labelledby="form-title">
+          <div class="bullets">
+            <div style="font-weight:700; color:var(--gold); margin-bottom:8px;">Augmentez vos revenus avec VIP Résidence</div>
+            <div style="color:var(--muted); margin-bottom:12px;">Obtenez une estimation instantanée et profitez de :</div>
+            <ul>
+              <li>Optimisation du taux de remplissage via photos & décoration professionnelle</li>
+              <li>Mise à jour quotidienne des prix pour maximiser la rentabilité</li>
+              <li>Stratégie avancée pour locations courtes et moyennes durées</li>
+              <li>Gestion complète — check-in, ménage, maintenance, communication 7j/7</li>
+              <li>Tarifs compétitifs : service premium à partir de 14% de commission</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- AVIS -->
+    <section id="avis" class="container" aria-labelledby="avis-title">
+      <div class="section-title" id="avis-title">Avis clients</div>
+
+      <div class="testimonials reveal">
+        <!-- sample testimonials: marketing + confiance -->
+        <article class="test">
+          <p>« VIP Résidence a transformé ma résidence secondaire : +29% de revenus la première saison, réservation transparente et voyageurs ravis. »</p>
+          <small>Claire M. — Propriétaire, Nice</small>
+        </article>
+
+        <article class="test">
+          <p>« Zéro stress. L'équipe gère tout de A à Z : check-in, ménage irréprochable, photos pro — le résultat parle pour lui. »</p>
+          <small>Paul T. — Investisseur, Bordeaux</small>
+        </article>
+
+        <article class="test">
+          <p>« Tarifs clairs, suivi quotidien et optimisation dynamique des prix. On recommande pour les propriétaires exigeants. »</p>
+          <small>Agence Locative — Paris</small>
+        </article>
+
+        <article class="test">
+          <p>« Support 7j/7 et réponse rapide aux voyageurs : nos notes d'évaluations ont explosé. Merci ! »</p>
+          <small>Julie D. — Hôte, Lyon</small>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container" aria-labelledby="contact-title">
+      <div class="section-title" id="contact-title">Nous contacter</div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+        <div class="reveal">
+          <h3 style="margin-top:0; color:#dfeff4">Demander une prestation</h3>
+          <p style="color:var(--muted)">Remplissez le formulaire — on vous propose une estimation détaillée et transparente sous 24 heures ouvrées.</p>
+
+          <!-- replicate the same form for visibility (still no backend) -->
+          <form class="card-form" onsubmit="return false;">
+            <label for="nom2">Nom et prénom</label>
+            <input id="nom2" placeholder="Prénom Nom" />
+
+            <label for="tel2">Numéro de téléphone</label>
+            <input id="tel2" placeholder="+33 6 12 34 56 78" />
+
+            <label for="mail2">Adresse email</label>
+            <input id="mail2" placeholder="contact@exemple.com" />
+
+            <label for="postal2">Code postal</label>
+            <input id="postal2" placeholder="Ex: 33000" />
+
+            <label for="lien2">Lien Airbnb / Booking du logement</label>
+            <input id="lien2" placeholder="https://..." />
+
+            <div class="cta">
+              <button class="big-btn" type="submit">Demander une prestation</button>
+              <div style="font-size:12px; color:var(--muted); align-self:center">Réponse sous 24h ouvrées</div>
+            </div>
+          </form>
+        </div>
+
+        <div class="reveal" style="padding:18px; border-radius:12px; background:var(--card); border:1px solid rgba(255,255,255,0.02)">
+          <h4 style="color:var(--gold); margin-top:0">Pourquoi nous choisir ?</h4>
+
+          <ul style="color:#d8e6eb; padding-left:18px;">
+            <li style="margin:10px 0">Gestion complète & transparente — vous gardez le contrôle.</li>
+            <li style="margin:10px 0">Optimisation continue des prix grâce à des outils avancés.</li>
+            <li style="margin:10px 0">Equipe locale pour interventions rapides et check-ins sans stress.</li>
+            <li style="margin:10px 0">Reporting clair et suivi des performances mensuel.</li>
+            <li style="margin:10px 0">Ménage professionnel & maintenance préventive incluse.</li>
+          </ul>
+
+          <div style="margin-top:18px; color:var(--muted)">Nos clients apprécient notre transparence, notre réactivité et la montée en valeur de leurs biens. Nous ne faisons pas de promesse vide : nous montrons des résultats.</div>
+
+          <div style="display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;">
+            <div style="padding:8px 12px; border-radius:8px; background:rgba(201,168,113,0.06); color:var(--gold); font-weight:700">Satisfaction garantie</div>
+            <div style="padding:8px 12px; border-radius:8px; background:rgba(255,255,255,0.02); color:var(--muted)">Assurance qualité</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <strong>VIP Résidence</strong> — Conciergerie & gestion locative courte durée · Tous droits réservés.
+      <div style="margin-top:6px; color:var(--muted); font-size:13px">Politique de confidentialité • Mentions légales</div>
+    </footer>
+  </main>
+
+  <script>
+    // Smooth scroll helper used by nav buttons (prevent default anchor behavior to keep smooth)
+    function scrollToSection(e, id){
+      if (e && e.preventDefault) e.preventDefault();
+      const el = document.getElementById(id);
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      // scroll into view with offset for sticky nav
+      const navHeight = document.querySelector('.nav').offsetHeight || 80;
+      window.scrollTo({
+        top: window.pageYOffset + rect.top - navHeight - 18,
+        behavior: 'smooth'
+      });
+    }
+
+    // Reveal on scroll (IntersectionObserver)
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // optional: unobserve to improve perf
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(r => obs.observe(r));
+
+    // micro-interaction: floating hero tilt on mouse move (subtle)
+    const hero = document.querySelector('.hero-card');
+    if (hero) {
+      hero.addEventListener('mousemove', (e) => {
+        const w = hero.offsetWidth;
+        const h = hero.offsetHeight;
+        const x = (e.offsetX - w/2)/(w/2);
+        const y = (e.offsetY - h/2)/(h/2);
+        hero.style.transform = `translateY(${ -6 + y * -4 }px) rotateX(${y * 1.2}deg) rotateY(${x * 1.2}deg)`;
+      });
+      hero.addEventListener('mouseleave', () => {
+        hero.style.transform = '';
+      });
+    }
+
+    // tiny UX: form submit feedback (client-side only)
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // show micro-feedback
+        const btn = form.querySelector('button[type="submit"]');
+        if (!btn) return;
+        const orig = btn.innerText;
+        btn.innerText = 'Envoi...';
+        btn.disabled = true;
+        setTimeout(() => {
+          btn.innerText = 'Envoyé ✔';
+          btn.style.transform = 'translateY(-2px)';
+        }, 700);
+        setTimeout(() => {
+          btn.innerText = orig;
+          btn.disabled = false;
+          btn.style.transform = '';
+        }, 2100);
+      });
+    });
+
+    // Accessibility: add focus outline for keyboard users
+    document.body.addEventListener('keyup', function(e){
+      if (e.key === 'Tab') document.documentElement.classList.add('show-focus');
+    });
+  </script>
+</body>
+</html>
