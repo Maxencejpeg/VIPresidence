@@ -685,17 +685,18 @@
         const btn = form.querySelector('button[type="submit"]');
         if (!btn) return;
         const orig = btn.innerText;
-        btn.innerText = 'Envoi...';
+        btn.innerText = 'Preparation du mail...';
         btn.disabled = true;
+        send_mail();
         setTimeout(() => {
-          btn.innerText = 'Envoyé ✔';
+          btn.innerText = 'OK !';
           btn.style.transform = 'translateY(-2px)';
         }, 700);
         setTimeout(() => {
           btn.innerText = orig;
           btn.disabled = false;
           btn.style.transform = '';
-        }, 2100);
+        }, 5000);
       });
     });
 
@@ -735,11 +736,14 @@
     }
 
     // Exemples d'hébergements (à supprimer ou modifier selon vos besoins)
-    add_host("Appartement Panorama", "Nice, Centre-ville", 4, 89);
+/*    add_host("Appartement Panorama", "Nice, Centre-ville", 4, 89);
     add_host("Studio Cosy", "Bordeaux, Chartrons", 2, 65);
     add_host("Loft Moderne", "Lyon, Confluence", 6, 120);
     add_host("Villa Mer & Soleil", "Biarritz, Front de mer", 8, 250);
-
+*/
+    function send_mail(){
+      window.open("mailto:vipresidence@gmail.com?subject=Demande de contact - "+document.getElementById("nom2").value+"&body=[Vous pouvez ajouter un cours message ici]%0A%0A%0A"+document.getElementById("nom2").value+"%0AMail : "+document.getElementById("mail2").value+"%0ATel : "+document.getElementById("tel2").value+"%0ACode postal : "+document.getElementById("postal2").value+"%0ALien : "+document.getElementById("lien2").value)
+    }
   </script>
 </body>
 </html>
