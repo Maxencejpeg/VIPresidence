@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>VIP Résidence — Conciergerie Airbnb</title>
   <meta name="description" content="VIP Résidence — gestion complète de vos locations courte durée. Zéro stress, rentabilité maximale." />
+  <link rel="icon" href="logo.jpg" type="image/png">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -25,13 +26,33 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
+      padding: 0;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(180deg,var(--bg) 0%, #071726 100%);
+      background: url('fond.png') center/cover no-repeat fixed;
+      position: relative;
       color: #e6eef3;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.5;
       padding-bottom:60px;
+      min-height: 200vh; /* just for demo */
+      --blur-amount: 0px;
+      --tint-opacity: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+
+      backdrop-filter: blur(var(--blur-amount));
+      background: rgba(15, 34, 48, var(--tint-opacity));
+
+      transition: backdrop-filter 0.2s linear, background 0.2s linear;
     }
 
     /* Top sticky nav */
@@ -275,6 +296,10 @@
       color:var(--gold);
       margin-bottom:18px;
     }
+    main{
+      position: relative;
+  z-index: 1;
+    }
 
     
     /* Hébergements recommandés */
@@ -433,6 +458,9 @@
   }
 }
 
+  .hero-card,  .form-wrap{
+    background-color: #0f223090 ;
+  }
 
 
   </style>
@@ -644,7 +672,7 @@
       <div style="margin-top:6px; color:var(--muted); font-size:13px">Politique de confidentialité • Mentions légales</div>
     </footer>
   </main>
-
+  <script src="blur.js"></script>
   <script>
     // Smooth scroll helper used by nav buttons (prevent default anchor behavior to keep smooth)
     function scrollToSection(e, id){
