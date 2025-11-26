@@ -6,13 +6,6 @@
   <title>VIP Résidence — Conciergerie Airbnb</title>
   <meta name="description" content="VIP Résidence — gestion complète de vos locations courte durée. Zéro stress, rentabilité maximale." />
   <link rel="icon" href="logo.jpg" type="image/png">
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WKP4S5MN');</script>
-<!-- End Google Tag Manager -->
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -61,7 +54,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     @media (max-width: 768px) {
   body::before {
-    background: url("fond_mobile.png") center/cover no-repeat fixed;
+    background: url("fond_mobile.png");
+    
+  }
+  body{
+    background-attachment: scroll;
   }
 }
     
@@ -489,10 +486,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKP4S5MN"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWM4BNB653"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EWM4BNB653');
+</script>
   <div class="bg"></div>
   <!-- NAV -->
   <nav class="nav" aria-label="Navigation principale">
