@@ -422,6 +422,18 @@
   text-decoration: none;
 }
 
+@media (max-width: 768px) {
+  #contact > div {
+    grid-template-columns: 1fr !important; /* 1 colonne sur tel */
+  }
+
+  /* le 2e bloc passe avant le 1er */
+  #contact > div > .reveal:nth-child(2) {
+    order: -1;
+  }
+}
+
+
 
   </style>
 </head>
@@ -742,7 +754,7 @@
     add_host("Villa Mer & Soleil", "Biarritz, Front de mer", 8, 250);
 */
     function send_mail(){
-      window.open("mailto:vipresidence@gmail.com?subject=Demande de contact - "+document.getElementById("nom2").value+"&body=[Vous pouvez ajouter un cours message ici]%0A%0A%0A"+document.getElementById("nom2").value+"%0AMail : "+document.getElementById("mail2").value+"%0ATel : "+document.getElementById("tel2").value+"%0ACode postal : "+document.getElementById("postal2").value+"%0ALien : "+document.getElementById("lien2").value)
+      window.open("mailto:vipresidence123@gmail.com?subject=Demande de contact - "+document.getElementById("nom2").value+"&body=[Vous pouvez ajouter un cours message ici]%0A%0A%0A"+document.getElementById("nom2").value+"%0AMail : "+document.getElementById("mail2").value+"%0ATel : "+document.getElementById("tel2").value+"%0ACode postal : "+document.getElementById("postal2").value+"%0ALien : "+document.getElementById("lien2").value)
     }
   </script>
 </body>
