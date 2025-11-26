@@ -3,7 +3,7 @@ function updateBlur() {
   const maxScroll = document.body.scrollHeight - window.innerHeight;
 
   // ratio entre 0 et 1
-  const progress = scroll *2/ maxScroll;
+  const progress = scroll *3/ maxScroll;
 
   // flou max : 30px
   const blur = Math.min(30 * progress, 30) + "px";

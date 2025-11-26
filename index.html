@@ -6,7 +6,13 @@
   <title>VIP Résidence — Conciergerie Airbnb</title>
   <meta name="description" content="VIP Résidence — gestion complète de vos locations courte durée. Zéro stress, rentabilité maximale." />
   <link rel="icon" href="logo.jpg" type="image/png">
-
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WKP4S5MN');</script>
+<!-- End Google Tag Manager -->
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -28,9 +34,9 @@
       margin:0;
       padding: 0;
       font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: url('fond.png') center/cover no-repeat fixed;
+      
       position: relative;
-      color: #e6eef3;
+      color: var(--bg);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.5;
@@ -48,12 +54,24 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
+      background: url('fond.png') center/cover no-repeat fixed;
+      filter: opacity(--tint-opacity);
 
-      backdrop-filter: blur(var(--blur-amount));
-      background: rgba(15, 34, 48, var(--tint-opacity));
-
-      transition: backdrop-filter 0.2s linear, background 0.2s linear;
+      transition: filter 0.2s linear, background 0.2s linear;
     }
+    
+    .bg{
+      display: flex;
+      position: fixed;
+      top:0px;
+      
+      filter: opacity(var(--tint-opacity));
+      left: 0px;
+      height: 100%;
+      width: 100%;
+      background: var(--bg);
+    }
+
 
     /* Top sticky nav */
     .nav {
@@ -466,7 +484,11 @@
   </style>
 </head>
 <body>
-
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKP4S5MN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="bg"></div>
   <!-- NAV -->
   <nav class="nav" aria-label="Navigation principale">
     <div class="nav-inner">
